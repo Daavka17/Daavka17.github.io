@@ -1,19 +1,131 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Агуулга</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab2 Itu</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            height: 100vh;
+            border: 1px solid black;
+        }
+        body {
+            margin: 0;
+        }
+
+        article {
+            display: none;
+        }
+
+        article.activate {
+            display: block;
+        }
+
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: darkgray;
+            color: black;
+            text-align: center;
+        }
+
+        .main-section{
+            display: flex;
+            align-items: start;
+            justify-content: start;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>My Family</h1>
     <table>
-        <ul>
-            <li><a href="Minii tuhai.html">About me</a></li>
-            <li><a href="lab2.html">HOME</a></li>
-            <li><a href="Minii ger buliin tuhai.html">My family</a></li>
-            <li><a href="minii naizuud.html">My friends</a></li>
-            <li><a href="holboo.html">Contact</a></li>
-        </ul>
+        <tr>
+            <td colspan="2" height="10%">
+                <h1>Family introduction</h1>
+            </td>
+        </tr>
+        <tr class="main-section">
+            <td width=20%>
+                <ul>
+                    <li><a href="#home" onclick="showSection('home')">Home</a></li>
+                    <li><a href="#about-me" onclick="showSection('about-me')">About me</a></li>
+                    <li><a href="#family" onclick="showSection('family')">Family</a></li>
+                    <li><a href="#friend" onclick="showSection('friend')">Friends</a></li>
+                    <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
+                    <li><a href="./index.html">Back to Main</a></li>
+                </ul>
+            </td>
+            <td>
+                <section>
+                    <article id="home" class="activate">
+                        <h2>Home</h2>
+                        <p>
+                            Манай танилцуулга вэб сайт!
+                            Энэ сайтаар дамжуулан өөрийгөө танилцуулах ба гэр бүл найз нөхдийнхөө талаар хуваалцах ба
+                            надтай холбоо барих боломжтой.
+                        </p>
+                    </article>
+                    <article id="about-me">
+                        <h2>About me</h2>
+                        <div>Full name: Гантулгын Даваацэрэн</div>
+                        <div>Birthdate: 2005.02.06</div>
+                        <div>University: Монгол улсын их сургууль</div>
+                        <div>Department: Мэдээлэл технологи электроникын сургууль</div>
+                        <div>hobby: Зураг зурах, гар бөмбөг тоглох etc.</div>
+                        <div>Lessons: 
+                            <li>Интернэт технологийн үндэс</li>
+                            <li>Тоон дохио боловсруулалтI</li>
+                            <li>Компьютерын сүлжээ</li>
+                            <li>Тоон системийн дизайн</li>
+                            <li>Чадлын электроник</li>
+                        </div>
+                    </article>
+                    <article id="family">
+                        <h2>Family</h2>
+                        <div>Аав - Н.Гантулга</div>
+                        <div>Ээж - Г.Зулзаяа</div>
+                        <div>Дүү - Г.Цэцэгмаа</div>
+                        <div>Дүү - Г.Буянзаяа</div>
+                        <div>Би - Г.Даваацэрэн</div>
+                        <p>Манай гэр бүл нь 5н гишүүнтэй бөгөөд бусад маань Завханд амьдардаг.</p>
+                    </article>
+                    <article id="friend">
+                        <h2>Friends</h2>
+                        <p>Их сургууль, 10 жил, цэцэрлэгээсээ найзалсан хүмүүс зөндөө байгаа.</p>
+                    </article>
+                    <article id="contact">
+                        <h2>Contact</h2>
+                        <li>Phone number: 99297443</li>
+                        <li>email: daavkagaa@gmail.com</li>
+                        <li>Facebook: Гантулга Даваацэрэн</li>
+                        <li>Linkedin: Даваацэрэн</li>
+                    </article>
+                </section>
+            </td>
+        </tr>
     </table>
+
+    <footer>
+        Davaatseren, 2024
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('article');
+            sections.forEach(section => {
+                section.classList.remove('activate');
+            });
+            document.getElementById(sectionId).classList.add('activate');
+        }
+    </script>
 </body>
+
 </html>
