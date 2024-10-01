@@ -3,71 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facebook Home Clone</title>
+    <title>Facebook-Like Layout</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Top Navigation Bar -->
     <div class="navbar">
-        <div class="logo">
-            <img src="logo.png" alt="Facebook Logo">
-        </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Search Facebook">
-        </div>
-        <div class="nav-icons">
-            <img src="home_icon.png" alt="Home">
-            <img src="watch_icon.png" alt="Watch">
-            <img src="marketplace_icon.png" alt="Marketplace">
-            <img src="group_icon.png" alt="Groups">
-            <img src="notification_icon.png" alt="Notifications">
-        </div>
-        <div class="profile">
-            <img src="profile_pic.png" alt="Profile Picture">
-            <span>Your Name</span>
+        <div class="logo">Facebook</div>
+        <input type="text" class="search-box" placeholder="Search Facebook">
+        <div class="navbar-icons">
+            <span class="icon">🔔</span>
+            <span class="icon">💬</span>
+            <span class="icon">👤</span>
         </div>
     </div>
 
-    <!-- Main Content Area -->
-    <div class="main-content">
+    <!-- Main Layout -->
+    <div class="container">
         <!-- Left Sidebar -->
         <div class="sidebar-left">
-            <ul>
-                <li><img src="friends_icon.png" alt="Friends"> Friends</li>
-                <li><img src="pages_icon.png" alt="Pages"> Pages</li>
-                <li><img src="groups_icon.png" alt="Groups"> Groups</li>
-                <li><img src="events_icon.png" alt="Events"> Events</li>
-            </ul>
+            <div class="sidebar-item">Profile</div>
+            <div class="sidebar-item">Friends</div>
+            <div class="sidebar-item">Groups</div>
+            <div class="sidebar-item">Marketplace</div>
         </div>
 
-        <!-- News Feed -->
-        <div class="news-feed">
-            <div class="status-box">
-                <img src="profile_pic.png" alt="Profile Picture">
-                <input type="text" placeholder="What's on your mind?">
+        <!-- Main Feed Area -->
+        <div class="main-feed">
+            <div class="post">
+                <h3>User Name</h3>
+                <p>This is a post content!</p>
             </div>
             <div class="post">
-                <div class="post-header">
-                    <img src="user_profile_pic.png" alt="User Profile Picture">
-                    <span>User Name</span>
-                    <span>2 hrs ago</span>
-                </div>
-                <div class="post-content">
-                    <p>This is a sample post to simulate a Facebook news feed.</p>
-                </div>
+                <h3>User Name</h3>
+                <p>This is another post content!</p>
             </div>
         </div>
 
         <!-- Right Sidebar -->
         <div class="sidebar-right">
-            <div class="contacts">
-                <h3>Contacts</h3>
-                <ul>
-                    <li><img src="friend1_profile_pic.png" alt="Friend Profile"> Friend 1</li>
-                    <li><img src="friend2_profile_pic.png" alt="Friend Profile"> Friend 2</li>
-                    <li><img src="friend3_profile_pic.png" alt="Friend Profile"> Friend 3</li>
-                </ul>
-            </div>
+            <div class="contacts">Contacts</div>
+            <div class="contact-item">John Doe</div>
+            <div class="contact-item">Jane Smith</div>
+            <div class="contact-item">Robert Brown</div>
         </div>
     </div>
 </body>
