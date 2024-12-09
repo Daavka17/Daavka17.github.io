@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAB 8</title>
+    <script>
+        // 1. Check if the sum of digits is a palindrome
+        function isPalindromeSum() {
+            let number = parseInt(prompt("Enter a number: "));
+            let sum = 0;
+            let temp = number;
+            
+            while (temp > 0) {
+                sum += temp % 10;
+                temp = Math.floor(temp / 10);
+            }
+
+            let sumStr = sum.toString();
+            let isPalindrome = sumStr === sumStr.split('').reverse().join('');
+            document.getElementById("result1").innerText = `Sum: ${sum}, Palindrome: ${isPalindrome}`;
+        }
+
+        // 2. Calculate time for wolf to catch rabbit
+        function catchRabbit() {
+            const wolfSpeed = 25; // km/h
+            const rabbitSpeed = 18; // km/h
+            const distance = parseFloat(prompt("Enter the distance (km): "));
+            
+            const relativeSpeed = wolfSpeed - rabbitSpeed;
+            const timeInHours = distance / relativeSpeed;
+            const timeInSeconds = timeInHours * 3600;
+            document.getElementById("result2").innerText = `Time to catch rabbit: ${Math.round(timeInSeconds)} seconds`;
+        }
+
+        // 3. Calculate the apartment's door number
+        function findDoor() {
+            const floorCount = 9;
+            const entryCount = 3;
+            const apartmentsPerFloor = 4;
+            const aptNumber = parseInt(prompt("Enter apartment number: "));
+
+            const apartmentsPerEntry = floorCount * apartmentsPerFloor;
+            const entry = Math.ceil(aptNumber / apartmentsPerEntry);
+            const aptPositionInEntry = aptNumber - (entry - 1) * apartmentsPerEntry;
+            const floor = Math.ceil(aptPositionInEntry / apartmentsPerFloor);
+            const door = aptPositionInEntry - (floor - 1) * apartmentsPerFloor;
+            
+            document.getElementById("result3").innerText = `entry: ${entry}, Floor: ${floor}, Door: ${door}`;
+        }
+
+        // 4. Find the smallest prime divisor of 5 numbers
+        function isPrime(num) {
+            if (num < 2) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+               if (num % i === 0) return false;
+            }
+            return true;
+        }
+
+        function smallestPrimeDivisor() {
+        let numbers = prompt("Enter 5 numbers separated by space:").split(" ").map(Number);
+        let smallestDivisors = numbers.map(num => {
+            for (let i = 2; i <= num; i++) {
+                if (num % i === 0 && isPrime(i)) {
+                    return i;
+                }
+            }
+            return num; // return the number itself if it's prime
+        });
+        document.getElementById("result4").innerText = `Smallest prime divisors: ${smallestDivisors.join(", ")}`;
+        }   
+
+        // 5. Calculate square and cube of the number
+        function calculateSquareCube() {
+            const number = parseInt(prompt("Enter a number: "));
+            const square = Math.pow(number, 2);
+            const cube = Math.pow(number, 3);
+            document.getElementById("result5").innerText = `Square: ${square}, Cube: ${cube}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Math Problems Solver</h1>
+
+    <button onclick="isPalindromeSum()">1. niilber ni palindrom mon eseh</button>
+    <p id="result1"></p>
+
+    <button onclick="catchRabbit()">2. chono tuulaig barih hugatsaa</button>
+    <p id="result2"></p>
+
+    <button onclick="findDoor()">3. geriin hayg</button>
+    <p id="result3"></p>
+
+    <button onclick="smallestPrimeDivisor()">4. hamgiin baga yronhii huvaagdagch</button>
+    <p id="result4"></p>
+
+    <button onclick="calculateSquareCube()">5. kvadrat bolon yzguur</button>
+    <p id="result5"></p>
+</body>
+</html>
