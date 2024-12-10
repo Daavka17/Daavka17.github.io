@@ -1,22 +1,184 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Hello</title>
-    </head>
-    <body>
-        <h1>dundaj oloh</h1>
-    </body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LAB-8</title>
+  </head>
+  <style>
+    .task {
+      margin: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+    input {
+      margin: 10px;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 200px;
+    }
+  </style>
+  <body>
+    <div class="task">
+      <h3>1. Палиндром шалгах</h3>
+      <p>
+        1. Гараас өгсөн тооны цифрүүдийн нийлбэр нь палимдром мөн эсэхийг шалга
+      </p>
+      <input type="number" id="palindromeInput" />
+      <button onclick="checkPalindrome()">Шалгах</button>
+      <p id="palindromeResult"></p>
+    </div>
+    <div class="task">
+      <h3>2. Чоно, туулай</h3>
+      <p>
+        2. Чоно 25 км/ц хурдтай, туулай 18 км/ц хурдтай. Гараас өгсөн зайтай
+        байхад хэдэн минут хэдэн секундын дараа гэхэд гүйцэх вэ
+      </p>
+      <input type="number" id="distanceInput" placeholder="Зай (км)" />
+      <button onclick="calculateCatch()">Тооцоолох</button>
+      <p id="catchResult"></p>
+    </div>
+    <div class="task">
+      <h3>3. Байшингийн тоот</h3>
+      <p>
+        3. Байшин 9 давхар, 3 орцтой, давхартаа 4 айлтай бол гараас өгсөн тоот
+        нь хэддүгээр орцны хэддүгээр давхарын хэд дэх хаалга вэ
+      </p>
+      <input type="number" id="apartmentInput" placeholder="Тоот" />
+      <button onclick="findApartment()">Хайх</button>
+      <p id="apartmentResult"></p>
+    </div>
+    <div class="task">
+      <h3>4. Хамгийн бага ерөнхий хуваагдагч</h3>
+      <p>4. Array-д өгөгдсөн 5 тооны хамгийн бага ерөнхий хуваагдагчийг ол</p>
+      <input
+        type="text"
+        id="numbersInput"
+        placeholder="5 тоо (таслалаар тусгаарлах)"
+      />
+      <button onclick="findLCM()">Олох</button>
+      <p id="lcmResult"></p>
+    </div>
+    <div class="task">
+      <h3>5. 2 зэрэг, язгуур</h3>
+      <p>
+        5. Вэб сайтруу өглөө орохо гараас өгсөн тооны 2 зэрэгийг, орой ороход
+        гараас өгсөн тооны язгуурыг ол.
+      </p>
+      <input type="number" id="powerInput" placeholder="Тоо" />
+      <button onclick="calculatePower()">Тооцоолох</button>
+      <p id="powerResult"></p>
+    </div>
+
     <script>
-        var total = 0;
-        var counter = 1;
-        var grade;
-        while(counter <=5) {
-            grade=window.prompt("dun");
-            let grateInt;
-            gradeInt = parseInt(grade); //textees toog salgadag
-            total=total+gradeInt;
-            counter++;
+      function checkPalindrome() {
+        const num = document.getElementById("palindromeInput").value;
+
+        let sum = 0;
+        for (let i = 0; i < num.length; i++) {
+          sum += parseInt(num[i]);
         }
-        document.write("<p>dundaj:</p>" + total/5);
+
+        let temp = sum;
+        let reversed = 0;
+        while (temp > 0) {
+          reversed = reversed * 10 + (temp % 10);
+          temp = Math.floor(temp / 10);
+        }
+        const isPalindrome = sum === reversed;
+
+        document.getElementById(
+          "palindromeResult"
+        ).textContent = `Цифрүүдийн нийлбэр ${sum} учир${
+          isPalindrome ? "палиндром мөн" : "палиндром биш"
+        }`;
+      }
+
+      // 2. Чоно, туулай
+      function calculateCatch() {
+        const distance = parseFloat(
+          document.getElementById("distanceInput").value
+        );
+        const speedDiff = 25 - 18;
+        const hours = distance / speedDiff;
+        const minutes = Math.floor(hours * 60);
+        const seconds = Math.floor((hours * 3600) % 60);
+        document.getElementById(
+          "catchResult"
+        ).textContent = `${minutes} минут ${seconds} секундын дараа гүйцнэ`;
+      }
+
+      // 3. Байшингийн тоот
+      function findApartment() {
+        const num = parseInt(document.getElementById("apartmentInput").value);
+
+        const orts = Math.ceil(num / 36);
+
+        const uldsen = num - (orts - 1) * 36;
+
+        const davhar = Math.ceil(uldsen / 4);
+
+        const haalga = uldsen - (davhar - 1) * 4;
+
+        document.getElementById(
+          "apartmentResult"
+        ).textContent = `${orts}-р орц, ${davhar}-р давхар, ${haalga}-р хаалга`;
+      }
+
+      // 4. Хамгийн бага ерөнхий хуваагдагч
+      //   function gcd(a, b) {
+      //     while (a !== b) {
+      //       if (a > b) {
+      //         a = a - b;
+      //       } else {
+      //         b = b - a;
+      //       }
+      //     }
+      //     return a;
+      //   }
+      function gcd(a, b) {
+        return b === 0 ? a : gcd(b, a % b);
+      }
+
+      function lcm(a, b) {
+        return (a * b) / gcd(a, b);
+      }
+
+      function findLCM() {
+        const numbers = document
+          .getElementById("numbersInput")
+          .value.split(",")
+          .map((n) => parseInt(n.trim()));
+
+        let result = numbers[0];
+        for (let i = 1; i < numbers.length; i++) {
+          result = lcm(result, numbers[i]);
+        }
+
+        document.getElementById(
+          "lcmResult"
+        ).textContent = `Хамгийн бага ерөнхий хуваагдагч: ${result}`;
+      }
+
+      // 5. Тооны зэрэг/язгуур
+      function calculatePower() {
+        const num = parseFloat(document.getElementById("powerInput").value);
+        const hour = new Date().getHours();
+        let result;
+
+        if (hour < 12) {
+          result = Math.pow(num, 2);
+          document.getElementById(
+            "powerResult"
+          ).textContent = `Өглөө учир ${num}-ийн квадрат: ${result}`;
+        } else {
+          result = Math.sqrt(num);
+          document.getElementById(
+            "powerResult"
+          ).textContent = `Орой учир ${num}-ийн язгуур: ${result}`;
+        }
+      }
     </script>
+  </body>
 </html>
